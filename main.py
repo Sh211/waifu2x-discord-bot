@@ -1,23 +1,22 @@
+import logging
 import requests
 from config import *
 from discord.ext import commands
 
 upload_counter = 0
 bot = commands.Bot(command_prefix='2x!')
+logging.basicConfig(level=logLevel,
+                    format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
+                    datefmt='%m-%d %H:%M',
+                    filename=attachment_cache_path + "\log.txt",
+                    filemode='w'
+                    )
 
-try:
-    createLog = open(attachment_cache_path + "\log.txt", "xt")
-    createLog.close()
-except FileExistsError:
-    print("Log file found, using that.")
-
-
-# def log_write():
-#    with open(attachment_cache_path) as log:
 
 @bot.event
 async def on_ready():
     print("Logged in as {}!".format(bot.user))
+    logging.info("Logged in as {}, ID {}.".format(bot.user, bot.user.id))
 
 
 @bot.command()
