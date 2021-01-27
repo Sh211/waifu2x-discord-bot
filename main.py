@@ -15,14 +15,14 @@ logging.basicConfig(level=logLevel,
 
 @bot.event
 async def on_ready():
-    print("Logged in as {}!".format(bot.user))
-    logging.info("Logged in as {}, ID {}.".format(bot.user, bot.user.id))
+    print(f"Logged in as {bot.user}!")
+    logging.info(f"Logged in as {bot.user}, ID {bot.user.id}.")
 
 
 @bot.command()
 async def ping(ctx):
     print(ctx.author.id)
-    await ctx.send("Pong! You are user {}, or id {}.".format(ctx.author, ctx.author.id))
+    await ctx.send(f"Pong! You are user {ctx.author}, or id {ctx.author.id}.")
 
 
 @bot.command()
@@ -30,8 +30,9 @@ async def upload(ctx):
     global upload_counter
     upload_counter += 1
 
-    cmd_author = ctx.author.id
-    file_name = str(cmd_author) + "-" + str(upload_counter)
+    file_name = str(ctx.author.id) + "-" + str(upload_counter)
+
+    logging.info(f"{ctx.author} ({ctx.author.id}) has uploaded the file {file_name} to {attachment_cache_path}.")
 
     msg_attachment_url = ctx.message.attachments[0].url
     req = requests.get(msg_attachment_url)
