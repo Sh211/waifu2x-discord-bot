@@ -23,4 +23,6 @@ How to use:
  2. Invite your bot. If you need help - see [Discord.py's tutorial on this.](https://discordpy.readthedocs.io/en/latest/discord.html#inviting-your-bot)
  
  3. Use 2x!upscale in a discord channel to upscale an image - like so.
+ 
+ 
  ![example](https://github.com/Sh211/waifu2x-discord-bot/blob/master/images/discordExample.png "An example of 2x!upscale")
